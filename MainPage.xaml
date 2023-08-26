@@ -3,24 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="tipCalculator.MainPage">
 
-    <VerticalStackLayout>
-        <Label Text="Total da conta"/>
+    <VerticalStackLayout Padding="40" Spacing="10" Margin="20"
+                 HorizontalOptions="Center">
+        <HorizontalStackLayout Spacing="10">
+            <Label Text="Conta" WidthRequest="100" VerticalOptions="Center"/>
             <Entry x:Name="billInput" Placeholder="Insira o valor" Keyboard="Numeric"/>
-            <Label Text="Tip" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Margin="0,20,0,0" Spacing="10">
+            <Label Text="Gorjeta" WidthRequest="100" />
             <Label x:Name="tipOutput" Text="0.00"/>
+        </HorizontalStackLayout>
 
-            <Label Text="Total" />
+        <HorizontalStackLayout Spacing="10">
+            <Label Text="Total" WidthRequest="100" />
             <Label x:Name="totalOutput" Text="0.00"/>
+        </HorizontalStackLayout>
 
-            <Label Text="Porcentagem de gorjeta"/>
+        <HorizontalStackLayout VerticalOptions="End" Spacing="10">
+            <Label Text="Percentual de gorjeta" WidthRequest="100"/>
             <Label x:Name="tipPercent" Text="15%"/>
-            <Slider x:Name="tipPercentSlider" Minimum="0" Maximum="100" Value="15"/>
+        </HorizontalStackLayout>
+        
+        <Slider WidthRequest="500" x:Name="tipPercentSlider" Minimum="0" Maximum="100" Value="15"/>
 
-            <Button Text= "15%" Clicked = "OnNormalTip"  />
-            <Button Text= "20%" Clicked = "OnGenerousTip"  />
+        <HorizontalStackLayout Margin="0,20,0,0" Spacing="10">
+            <Button WidthRequest="100" Text= "15%" Clicked = "OnNormalTip"  />
+            <Button WidthRequest="100" Text= "20%" Clicked = "OnGenerousTip"/>
+        </HorizontalStackLayout>
 
-            <Button x:Name="roundDown" Text="Round Down"/>
-            <Button x:Name="roundUp" Text="Round Up"/>
+        <HorizontalStackLayout Margin="0,20,0,0" Spacing="10">
+            <Button WidthRequest="100" x:Name="roundDown" Text="Round Down"/>
+            <Button WidthRequest="100" x:Name="roundUp" Text="Round Up"/>
+        </HorizontalStackLayout>
+        
     </VerticalStackLayout>
 
 </ContentPage>

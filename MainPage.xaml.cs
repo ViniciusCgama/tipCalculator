@@ -43,13 +43,13 @@ public partial class MainPage : ContentPage
 		}
 	}
 
-public void OnNormalTip (object sender, EventArgs e)
-{
+	public void OnNormalTip (object sender, EventArgs e)
+	{
 	tipPercentSlider.Value = 15;
-}
+	}
 
-public void OnGenerousTip(object sender, EventArgs e)
-{
+	public void OnGenerousTip(object sender, EventArgs e)
+	{
     tipPercentSlider.Value = 20;
-}
+	}
 }
