@@ -4,7 +4,22 @@ namespace tipCalculator;
 
 public partial class MainPage : ContentPage
 {
-	void CalculateTip(bool OnNormalTip ,bool OnGenarateTip, bool roundUp, bool roundDown)
+	public MainPage()
+	{
+		InitializeComponent();
+		billInput.TextChanged += (s, e) => CalculateTip(false, false);
+		roundDown.Clicked += (s, e) => CalculateTip(false, true);
+		roundUp.Clicked += (s, e) => CalculateTip(true, false);
+
+		tipPercentSlider.ValueChanged += (s, e) =>
+		{
+			double pct = Math.Round(e.NewValue);
+			tipPercent.Text = pct + "%";
+			CalculateTip(false, false);
+		};
+	}
+
+	public void CalculateTip(bool roundUp, bool roundDown)
 	{
 		double t;
 		if (Double.TryParse(billInput.Text, out t) && t > 0)
@@ -13,7 +28,6 @@ public partial class MainPage : ContentPage
 			double tip = Math.Round(t * (pct / 100.0), 2);
 
 			double final = t + tip;
-
 			if (roundUp)
 			{
 				final = Math.Ceiling(final);
@@ -21,11 +35,21 @@ public partial class MainPage : ContentPage
 			}
 			else if (roundDown)
 			{
-				final = Math.Ceiling(final);
+				final = Math.Floor(final);
 				tip = final - t;
 			}
-			tipOutput.Text = final.ToString("C");
+			tipOutput.Text = tip.ToString("C");
 			totalOutput.Text = final.ToString("C");
 		}
 	}
+
+public void OnNormalTip (object sender, EventArgs e)
+{
+	tipPercentSlider.Value = 15;
+}
+
+public void OnGenerousTip(object sender, EventArgs e)
+{
+    tipPercentSlider.Value = 20;
+}
 }
