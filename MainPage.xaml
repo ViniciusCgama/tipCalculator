@@ -3,24 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="tipCalculator.MainPage">
 
-    <VerticalStackLayout>
-        <Label Text="Total da conta"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0" HorizontalOptions="CenterAndExpand">
+            <Label Text="Total da conta" />
             <Entry x:Name="billInput" Placeholder="Insira o valor" Keyboard="Numeric"/>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1">
             <Label Text="Tip" />
-            <Label x:Name="tipOutput" Text="0.00"/>
+            <Label x:Name="tipOutput" Text="0.00" HorizontalOptions="CenterAndExpand"/>
 
             <Label Text="Total" />
-            <Label x:Name="totalOutput" Text="0.00"/>
+            <Label x:Name="totalOutput" Text="0.00" HorizontalOptions="CenterAndExpand"/>
 
             <Label Text="Porcentagem de gorjeta"/>
-            <Label x:Name="tipPercent" Text="15%"/>
-            <Slider x:Name="tipPercentSlider" Minimum="0" Maximum="100" Value="15"/>
+            <Label x:Name="tipPercent" Text="15%" HorizontalOptions="CenterAndExpand"/>
+            <Slider x:Name="tipPercentSlider" Minimum="0" Maximum="100" Value="15" HorizontalOptions="FillAndExpand"/>
 
-            <Button Text= "15%" Clicked = "OnNormalTip"  />
-            <Button Text= "20%" Clicked = "OnGenerousTip"  />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="15%" Clicked="OnNormalTip"/>
+                <Button Text="20%" Clicked="OnGenerousTip"/>
+            </StackLayout>
 
-            <Button x:Name="roundDown" Text="Round Down"/>
-            <Button x:Name="roundUp" Text="Round Up"/>
-    </VerticalStackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button x:Name="roundDown" Text="Round Down"/>
+                <Button x:Name="roundUp" Text="Round Up"/>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
 
 </ContentPage>
